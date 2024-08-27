@@ -1,14 +1,15 @@
 <?php
+
 /**
  * @author Sachindra Awasthi
  * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
  * @package Tech9logy_Tathastu
  */
+
 namespace Tech9logy\Tathastu\Observer\Catalog\Product;
 
 class FullPathBreadcrumbs implements \Magento\Framework\Event\ObserverInterface
 {
-
     protected $_registry;
 
     protected $_categoryRepository;
@@ -17,7 +18,7 @@ class FullPathBreadcrumbs implements \Magento\Framework\Event\ObserverInterface
         \Magento\Framework\Registry $registry,
         \Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository
     ) {
-        $this->_registry=$registry;
+        $this->_registry = $registry;
         $this->_categoryRepository = $categoryRepository;
     }
 
@@ -35,7 +36,7 @@ class FullPathBreadcrumbs implements \Magento\Framework\Event\ObserverInterface
         if ($product != null && !$this->_registry->registry('current_category')) {
             $cats = $product->getAvailableInCategories();
 
-            if (sizeof($cats)===1) {
+            if (sizeof($cats) === 1) {
                 $last = $cats[0];
             } else {
                 end($cats);

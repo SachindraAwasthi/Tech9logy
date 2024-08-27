@@ -1,9 +1,11 @@
 <?php
+
 /**
  * @author Sachindra Awasthi
  * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
  * @package Tech9logy_Tathastu
  */
+
 declare(strict_types=1);
 
 namespace Tech9logy\Tathastu\Setup\Patch\Data;

@@ -1,14 +1,16 @@
 <?php
+
 /**
  * @author Sachindra Awasthi
  * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
  * @package Tech9logy_Tathastu
  */
+
 namespace Tech9logy\Tathastu\Observer\Product;
- 
+
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
- 
+
 class Data implements ObserverInterface
 {
     /**
@@ -32,7 +34,7 @@ class Data implements ObserverInterface
     {
         $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
         $request = $objectManager->get('\Magento\Framework\App\Request\Http');
-        
+
         if ($request->getFullActionName() == "customer_account_create") {
             $customerSession = $objectManager->get('Magento\Customer\Model\Session');
             if (!$customerSession->isLoggedIn()) {

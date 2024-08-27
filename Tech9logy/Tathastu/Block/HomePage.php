@@ -1,9 +1,11 @@
 <?php
+
 /**
  * @author Sachindra Awasthi
  * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
  * @package Tech9logy_Tathastu
  */
+
 namespace Tech9logy\Tathastu\Block;
 
 use Magento\Catalog\Block\Product\Context;
@@ -32,7 +34,7 @@ class HomePage extends \Magento\Framework\View\Element\Template
         $this->_productCollectionFactory =  $productCollectionFactory;
         parent::__construct($context);
     }
-   
+
     public function getBestSellerProductCollection()
     {
         $productIds = [];
@@ -47,7 +49,7 @@ class HomePage extends \Magento\Framework\View\Element\Template
             ->addFieldToFilter('visibility', 4)
             ->addStoreFilter($this->getStoreId())
             ->setPageSize(20);
-            
+
         if ($collection->getSize() < 4) {
             $collection = $this->_productCollectionFactory->create()->addAttributeToSelect('*');
             $collection->addAttributeToSort('entity_id', 'asc')

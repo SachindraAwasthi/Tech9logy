@@ -69,7 +69,8 @@ define(["jquery"], function ($) {
          * @param {HTMLElement|jQuery} element - The element to create the carousel for.
          * @param {Object} [options] - The options
          */
-        function Owl(element, options) {
+        function Owl(element, options)
+        {
 
             /**
              * Current settings for the carousel.
@@ -253,8 +254,8 @@ define(["jquery"], function ($) {
          */
         Owl.Width = {
             Default: 'default',
-            Inner: 'inner',
-            Outer: 'outer'
+                Inner: 'inner',
+                Outer: 'outer'
         };
 
         /**
@@ -1497,11 +1498,13 @@ define(["jquery"], function ($) {
                 this.e._checkVisibile = window.setInterval($.proxy(checkVisible, this), 500);
             }
 
-            function isElVisible(el) {
+            function isElVisible(el)
+            {
                 return el.offsetWidth > 0 && el.offsetHeight > 0;
             }
 
-            function checkVisible() {
+            function checkVisible()
+            {
                 if (isElVisible(this.$element.get(0))) {
                     this.$element.removeClass('owl-hidden');
                     this.refresh();
@@ -1726,7 +1729,8 @@ define(["jquery"], function ($) {
          * @returns {object} - Contains X and Y of current mouse/touch position
          */
 
-        function getTouches(event) {
+        function getTouches(event)
+        {
             if (event.touches !== undefined) {
                 return {
                     x: event.touches[0].pageX,
@@ -1757,7 +1761,8 @@ define(["jquery"], function ($) {
          * @param {Array} array - The CSS properties to check for.
          * @returns {Array} - Contains the supported CSS property name and its index or `false`.
          */
-        function isStyleSupported(array) {
+        function isStyleSupported(array)
+        {
             var p, s, fake = document.createElement('div'), list = array;
             for (p in list) {
                 s = list[p];
@@ -1775,7 +1780,8 @@ define(["jquery"], function ($) {
          * @todo Realy bad design
          * @returns {Number}
          */
-        function isTransition() {
+        function isTransition()
+        {
             return isStyleSupported(['transition', 'WebkitTransition', 'MozTransition', 'OTransition'])[1];
         }
 
@@ -1784,7 +1790,8 @@ define(["jquery"], function ($) {
          * @private
          * @returns {String} The supported property name or false.
          */
-        function isTransform() {
+        function isTransform()
+        {
             return isStyleSupported(['transform', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform'])[0];
         }
 
@@ -1793,7 +1800,8 @@ define(["jquery"], function ($) {
          * @private
          * @returns {String} The supported property name or false.
          */
-        function isPerspective() {
+        function isPerspective()
+        {
             return isStyleSupported(['perspective', 'webkitPerspective', 'MozPerspective', 'OPerspective', 'MsPerspective'])[0];
         }
 
@@ -1802,7 +1810,8 @@ define(["jquery"], function ($) {
          * @private
          * @returns {Boolean}
          */
-        function isTouchSupport() {
+        function isTouchSupport()
+        {
             return 'ontouchstart' in window || !!(navigator.msMaxTouchPoints);
         }
 
@@ -1811,7 +1820,8 @@ define(["jquery"], function ($) {
          * @private
          * @returns {Boolean}
          */
-        function isTouchSupportIE() {
+        function isTouchSupportIE()
+        {
             return window.navigator.msPointerEnabled;
         }
 
@@ -2005,17 +2015,17 @@ define(["jquery"], function ($) {
                         this.update();
                     }
                 }, this),
-                'changed.owl.carousel': $.proxy(function (e) {
-                    if (this._core.settings.autoHeight && e.property.name == 'position') {
-                        this.update();
-                    }
-                }, this),
-                'loaded.owl.lazy': $.proxy(function (e) {
-                    if (this._core.settings.autoHeight && e.element.closest('.' + this._core.settings.itemClass)
-                        === this._core.$stage.children().eq(this._core.current())) {
-                        this.update();
-                    }
-                }, this)
+            'changed.owl.carousel': $.proxy(function (e) {
+                if (this._core.settings.autoHeight && e.property.name == 'position') {
+                    this.update();
+                }
+            }, this),
+            'loaded.owl.lazy': $.proxy(function (e) {
+                if (this._core.settings.autoHeight && e.element.closest('.' + this._core.settings.itemClass)
+                    === this._core.$stage.children().eq(this._core.current())) {
+                    this.update();
+                }
+            }, this)
             };
 
             // set default options
@@ -2112,18 +2122,18 @@ define(["jquery"], function ($) {
                         e.preventDefault();
                     }
                 }, this),
-                'refresh.owl.carousel changed.owl.carousel': $.proxy(function (e) {
-                    if (this._playing) {
-                        this.stop();
-                    }
-                }, this),
-                'prepared.owl.carousel': $.proxy(function (e) {
-                    var $element = $(e.content).find('.owl-video');
-                    if ($element.length) {
-                        $element.css('display', 'none');
-                        this.fetch($element, $(e.content));
-                    }
-                }, this)
+            'refresh.owl.carousel changed.owl.carousel': $.proxy(function (e) {
+                if (this._playing) {
+                    this.stop();
+                }
+            }, this),
+            'prepared.owl.carousel': $.proxy(function (e) {
+                var $element = $(e.content).find('.owl-video');
+                if ($element.length) {
+                    $element.css('display', 'none');
+                    this.fetch($element, $(e.content));
+                }
+            }, this)
             };
 
             // set default options
@@ -2382,14 +2392,14 @@ define(["jquery"], function ($) {
                         this.next = e.property.value;
                     }
                 }, this),
-                'drag.owl.carousel dragged.owl.carousel translated.owl.carousel': $.proxy(function (e) {
-                    this.swapping = e.type == 'translated';
-                }, this),
-                'translate.owl.carousel': $.proxy(function (e) {
-                    if (this.swapping && (this.core.options.animateOut || this.core.options.animateIn)) {
-                        this.swap();
-                    }
-                }, this)
+            'drag.owl.carousel dragged.owl.carousel translated.owl.carousel': $.proxy(function (e) {
+                this.swapping = e.type == 'translated';
+            }, this),
+            'translate.owl.carousel': $.proxy(function (e) {
+                if (this.swapping && (this.core.options.animateOut || this.core.options.animateIn)) {
+                    this.swap();
+                }
+            }, this)
             };
 
             this.core.$element.on(this.handlers);
@@ -2492,22 +2502,22 @@ define(["jquery"], function ($) {
                 'translated.owl.carousel refreshed.owl.carousel': $.proxy(function () {
                     this.autoplay();
                 }, this),
-                'play.owl.autoplay': $.proxy(function (e, t, s) {
-                    this.play(t, s);
-                }, this),
-                'stop.owl.autoplay': $.proxy(function () {
-                    this.stop();
-                }, this),
-                'mouseover.owl.autoplay': $.proxy(function () {
-                    if (this.core.settings.autoplayHoverPause) {
-                        this.pause();
-                    }
-                }, this),
-                'mouseleave.owl.autoplay': $.proxy(function () {
-                    if (this.core.settings.autoplayHoverPause) {
-                        this.autoplay();
-                    }
-                }, this)
+            'play.owl.autoplay': $.proxy(function (e, t, s) {
+                this.play(t, s);
+            }, this),
+            'stop.owl.autoplay': $.proxy(function () {
+                this.stop();
+            }, this),
+            'mouseover.owl.autoplay': $.proxy(function () {
+                if (this.core.settings.autoplayHoverPause) {
+                    this.pause();
+                }
+            }, this),
+            'mouseleave.owl.autoplay': $.proxy(function () {
+                if (this.core.settings.autoplayHoverPause) {
+                    this.autoplay();
+                }
+            }, this)
             };
 
             this.core.$element.on(this.handlers);
@@ -2682,43 +2692,43 @@ define(["jquery"], function ($) {
                         this._templates.push($(e.content).find('[data-dot]').addBack('[data-dot]').attr('data-dot'));
                     }
                 }, this),
-                'add.owl.carousel': $.proxy(function (e) {
-                    if (this._core.settings.dotsData) {
-                        this._templates.splice(e.position, 0, $(e.content).find('[data-dot]').addBack('[data-dot]').attr('data-dot'));
+            'add.owl.carousel': $.proxy(function (e) {
+                if (this._core.settings.dotsData) {
+                    this._templates.splice(e.position, 0, $(e.content).find('[data-dot]').addBack('[data-dot]').attr('data-dot'));
+                }
+            }, this),
+            'remove.owl.carousel prepared.owl.carousel': $.proxy(function (e) {
+                if (this._core.settings.dotsData) {
+                    this._templates.splice(e.position, 1);
+                }
+            }, this),
+            'change.owl.carousel': $.proxy(function (e) {
+                if (e.property.name == 'position') {
+                    if (!this._core.state.revert && !this._core.settings.loop && this._core.settings.navRewind) {
+                        var current = this._core.current(),
+                            maximum = this._core.maximum(),
+                            minimum = this._core.minimum();
+                        e.data = e.property.value > maximum
+                            ? current >= maximum ? minimum : maximum
+                            : e.property.value < minimum ? maximum : e.property.value;
                     }
-                }, this),
-                'remove.owl.carousel prepared.owl.carousel': $.proxy(function (e) {
-                    if (this._core.settings.dotsData) {
-                        this._templates.splice(e.position, 1);
-                    }
-                }, this),
-                'change.owl.carousel': $.proxy(function (e) {
-                    if (e.property.name == 'position') {
-                        if (!this._core.state.revert && !this._core.settings.loop && this._core.settings.navRewind) {
-                            var current = this._core.current(),
-                                maximum = this._core.maximum(),
-                                minimum = this._core.minimum();
-                            e.data = e.property.value > maximum
-                                ? current >= maximum ? minimum : maximum
-                                : e.property.value < minimum ? maximum : e.property.value;
-                        }
-                    }
-                }, this),
-                'changed.owl.carousel': $.proxy(function (e) {
-                    if (e.property.name == 'position') {
-                        this.draw();
-                    }
-                }, this),
-                'refreshed.owl.carousel': $.proxy(function () {
-                    if (!this._initialized) {
-                        this.initialize();
-                        this._initialized = true;
-                    }
-                    this._core.trigger('refresh', null, 'navigation');
-                    this.update();
+                }
+            }, this),
+            'changed.owl.carousel': $.proxy(function (e) {
+                if (e.property.name == 'position') {
                     this.draw();
-                    this._core.trigger('refreshed', null, 'navigation');
-                }, this)
+                }
+            }, this),
+            'refreshed.owl.carousel': $.proxy(function () {
+                if (!this._initialized) {
+                    this.initialize();
+                    this._initialized = true;
+                }
+                this._core.trigger('refresh', null, 'navigation');
+                this.update();
+                this.draw();
+                this._core.trigger('refreshed', null, 'navigation');
+            }, this)
             };
 
             // set default options
@@ -3051,10 +3061,10 @@ define(["jquery"], function ($) {
                         $(window).trigger('hashchange.owl.navigation');
                     }
                 }, this),
-                'prepared.owl.carousel': $.proxy(function (e) {
-                    var hash = $(e.content).find('[data-hash]').addBack('[data-hash]').attr('data-hash');
-                    this._hashes[hash] = e.content;
-                }, this)
+            'prepared.owl.carousel': $.proxy(function (e) {
+                var hash = $(e.content).find('[data-hash]').addBack('[data-hash]').attr('data-hash');
+                this._hashes[hash] = e.content;
+            }, this)
             };
 
             // set default options

@@ -1,8 +1,0 @@
-<?php
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$enableCouponCodeForm = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')
-    ->isSetFlag('tech9logycouponcode/general_settings/enable_shortcode', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-if ($enableCouponCodeForm):
-    echo $block->getLayout()->createBlock("Tech9logy\CouponCode\Block\Widget\Form")->toHtml();
-endif;
-?>

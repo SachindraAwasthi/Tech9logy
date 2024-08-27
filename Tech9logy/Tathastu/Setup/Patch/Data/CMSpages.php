@@ -1,13 +1,17 @@
 <?php
+
 /**
  * @author Sachindra Awasthi
  * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
  * @package Tech9logy_Tathastu
  */
+
 namespace Tech9logy\Tathastu\Setup\Patch\Data;
 
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Cms\Model\PageFactory;
+use Magento\Cms\Api\PageRepositoryInterface;
+use Magento\Framework\Exception\LocalizedException;
 
 class CMSpages implements DataPatchInterface
 {
@@ -16,10 +20,17 @@ class CMSpages implements DataPatchInterface
      */
     private $pageFactory;
 
+    /**
+     * @var PageRepositoryInterface
+     */
+    private $pageRepository;
+
     public function __construct(
-        PageFactory $pageFactory
+        PageFactory $pageFactory,
+        PageRepositoryInterface $pageRepository
     ) {
         $this->pageFactory = $pageFactory;
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -225,9 +236,22 @@ class CMSpages implements DataPatchInterface
             ],
         ];
 
-        // Create pages
         foreach ($cmsPageData as $cmsPage) {
-            $this->pageFactory->create()->setData($cmsPage)->save();
+            try {
+                // Check if a page with the same URL key already exists
+                $existingPage = $this->pageRepository->getById($cmsPage['identifier']);
+            } catch (LocalizedException $e) {
+                $existingPage = null;
+            }
+
+            if (!$existingPage) {
+                // Page does not exist, so create it
+                $this->pageFactory->create()->setData($cmsPage)->save();
+            } else {
+                // Optionally, update the existing page
+                $existingPage->setData(array_merge($existingPage->getData(), $cmsPage));
+                $this->pageRepository->save($existingPage);
+            }
         }
     }
 

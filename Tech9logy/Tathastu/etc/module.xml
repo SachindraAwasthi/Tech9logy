@@ -1,9 +1,12 @@
 <?xml version="1.0" ?>
-<!-- /**
+<!-- 
+/**
 * @author Sachindra Awasthi
 * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
 * @package Tech9logy_Tathastu
-*/ -->
+*/
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-	<module name="Tech9logy_Tathastu" setup_version="1.0.0" >
+    <module name="Tech9logy_Tathastu" setup_version="1.0.0">
+    </module>
 </config>
