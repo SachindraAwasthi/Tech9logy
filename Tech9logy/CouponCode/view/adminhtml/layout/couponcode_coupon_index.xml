@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="couponcode_coupon_default"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent  name="tech9logycouponcode_coupon_listing"/> 
+        </referenceContainer>
+    </body>
+</page>

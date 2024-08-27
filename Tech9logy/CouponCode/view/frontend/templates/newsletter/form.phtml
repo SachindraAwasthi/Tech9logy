@@ -1,0 +1,198 @@
+<?php
+/** @var  \Tech9logy\CouponCodePro\Helper\Data $_helper */
+ $_helper = $block->helper('Tech9logy\CouponCode\Helper\Data');
+?>
+<form action="<?= $_helper->getFormActionUrl(); ?>"
+      novalidate
+      method="post"
+      action="<?= $escaper->escapeUrl($_helper->getFormActionUrl()) ?>"
+      method="post"
+      data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+      id="">
+      <h6>How did you hear about us?</h6>
+      <div class="survey-ques-row">
+                <label class="survey-col">
+                    <input type="radio" name="source" value="Google search"> Google search
+                </label>
+                
+                <label class="survey-col">
+                    <input type="radio" name="source" value="Word of mouth"> Word of mouth
+                </label>
+                
+                <label class="survey-col">
+                    <input type="radio" name="source" value="eBay"> eBay
+                </label>
+                
+                <label class="survey-col">
+                    <input type="radio" name="source" value="Etsy"> Etsy
+                </label>
+                
+                <label class="survey-col">
+                    <input type="radio" name="source" value="Social Media"> Social media
+                </label>
+                
+                <label class="survey-col">
+                    <input type="radio" name="source" value="Other"> Other
+                </label>
+        </div>
+    <div class="form-group">
+        <input name="email" type="email" id="popup_newsletter_email"
+               placeholder="<?= $escaper->escapeHtml(__('Enter address')) ?>"
+               data-validate="{required:true, 'validate-email':true}"/>
+        <button class="action subscribe primary sw-btn-base sw-btn-primary sw-fill-out" title="<?= $escaper->escapeHtml(__('SUBSCRIBE')) ?>" type="submit">
+            <span><?= $escaper->escapeHtml(__('SUBSCRIBE')) ?></span>
+        </button>
+    </div>
+</form>
+<p class="privacy-tag-line">We respect your privacy and will never share your details with a third party.</p>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+.newsletter-modal .modal-inner-wrap{ max-width:700px; width:100%;}
+.welcome-popup-bx { max-width: 600px; width: 100%; margin: 0px auto; display: flex; flex-flow: wrap;}
+.welcome-popup-text { width: 50%; padding: 0px 15px 0px 0px; box-sizing: border-box;}
+.welcome-popup-text h2 { font-size: large; margin: 0px 0px 25px; font-weight: bold; color: #1d1d1d; font-family: 'Lato', sans-serif;}
+.subscribe-newsletter-tag-line {font-family: 'Baskerville', sans-serif; font-size: medium;}
+p.privacy-tag-line { font-family: 'Lato', sans-serif;font-size: 12px; margin-bottom:0px;margin-top:20px;}
+.welcome-popup-text form h6 { margin: 0px 0px 25px;}
+.welcome-popup-text .survey-ques-row { display: flex; flex-flow: wrap; justify-content: space-between; padding-bottom: 10px;}
+.welcome-popup-text .survey-ques-row .survey-col { width: 48%; font-size: 12px; text-align: left; padding-bottom:5px;}
+.welcome-popup-text .survey-ques-row .survey-col input { width: auto !important; margin-top: 0px; margin-right: 5px;}
+.welcome-popup-text .survey-ques-row .survey-col input:focus{box-shadow: none;}
+
+.welcome-popup-text form .form-group input { width: 100% !important; border-radius: 2px; color: #1d1d1d; margin-bottom: 10px; margin-right: 0px; padding: 0px 10px;}
+.welcome-popup-text form .form-group button { background-color: #1d1d1d !important; border: solid 1px #1d1d1d !important; width: 100% !important; border-radius: 2px !important; margin-bottom: 10px !important; margin-left: 0px !important; }
+.welcome-popup-text form .form-group button:hover { background-color: transparent !important; border: solid 1px #1d1d1d !important; color: #1d1d1d !important;}
+.welcome-popup-figure { width: 50%;}
+.welcome-popup-figure img { object-fit: cover; width: auto; height: 100%; max-width: 100%;}
+
+.radio-list {display: flex; display: -webkit-box; display: -webkit-flex; display: -moz-flex;    
+    display: -ms-flex;        flex-flow: wrap;     padding:20px 0px;}
+
+.radio-list label.survey-col {    width: 49.5%;    display: flex;      padding-bottom: 5px; } 
+.radio-list label.survey-col input{margin-right:5px;}
+
+.welcome-popup-text form .form-group button.subscribe{background: #979797 !important;    color: #fff !important;    font-weight: 400 !important;    text-transform: uppercase !important;
+    font-size: 11px !important;    letter-spacing: 1.5px !important;    line-height: 21px !important;
+    outline: none !important;    text-decoration: none !important;    font-family: 'FrutigerLTStd-Light',sans-serif !important;
+    border-radius: 3px !important;    border: 0 !important;}
+
+.welcome-popup-text form .form-group button.subscribe:hover,.welcome-popup-text form .form-group button.subscribe:active, 
+.welcome-popup-text form .form-group button.subscribe:focus{background: #646464 !important;    color: #fff !important;}   
+.popup-newsletter{ margin: 0 auto !important;}
+.newsletter-modal .modal-inner-wrap { max-width: 2137px; width: 100%;}
+.welcome-popup-bx { max-width: 100%;}
+.welcome-popup-text { width: 70%; padding: 50px; box-sizing: border-box;}
+.welcome-popup-figure { width: 30%;}
+.newsletter-modal .modal-content {  padding: 0; overflow-y: unset !important;}
+.welcome-popup-text h2 { font-size: 85pt;}
+.subscribe-newsletter-tag-line { font-family: 'Baskerville', sans-serif; font-size: 40pt; margin:0px 0px 25px 0px; line-height:normal;}
+.welcome-popup-text form h6 { font-size: 24pt;}
+ p.privacy-tag-line { font-family: 'Lato', sans-serif;font-size: 21px; color: #666;}
+
+
+.newsletter-modal .modal-header { padding: 0px; width: 50px; height: 50px; position: absolute; top: 0px; right: 0px; z-index: 1; background-color: #fff; }
+.newsletter-modal .modal-header .action-close { padding: 14px; }
+.newsletter-modal .modal-header .action-close:before { color: #000; font-size: 23px; padding: 0px !important; }
+.popup-newsletter>.content>p { margin: 0px;}
+
+.welcome-popup-text form .form-group input { padding: 0px 20px; font-size: 21px; height: 60px; }
+.welcome-popup-text form .form-group button.subscribe { font-size: 21px !important; line-height: 50px !important; border-radius: 2px !important;}
+.welcome-popup-text .survey-ques-row { max-width: 500px; width: 100%;}
+.welcome-popup-text form .form-group { max-width:55%; width: 100%; }
+
+@media screen and (max-width: 992px)
+{
+    .welcome-popup-bx { padding: 0px !important;}
+}
+
+@media screen and (max-width: 767px)
+{
+    #wpn-lightbox-content{ width:100%;}
+    .welcome-popup-text { width: 100%; padding: 15px 0px 0px 0px; order: 2;}
+    .welcome-popup-figure { width: 100%;}
+    .welcome-popup-figure img { width: 100% !important; height: auto !important;}
+
+
+}
+
+@media screen and (max-width: 2199px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 1900px;}
+    .welcome-popup-text { width: 65%;}
+    .welcome-popup-figure { width: 35%;}
+    .welcome-popup-text h2 { font-size: 65pt;}
+    .subscribe-newsletter-tag-line { font-size: 30pt;}
+    .welcome-popup-text form h6 { font-size: 20pt;}
+    .welcome-popup-text .survey-ques-row .survey-col{ font-size:18px;}
+    .welcome-popup-text form .form-group input { font-size: 18px; height: 50px; }
+    .welcome-popup-text form .form-group button.subscribe {font-size: 18px !important; line-height: 40px !important; }
+    p.privacy-tag-line { font-size: 18px; }
+}
+
+@media screen and (max-width: 1920px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 1500px;}
+    .welcome-popup-text h2 { font-size: 50pt;}
+    .subscribe-newsletter-tag-line { font-size: 22pt;}
+    .welcome-popup-text form h6 { font-size: 16pt;}
+    .welcome-popup-text .survey-ques-row .survey-col{ font-size:16px;}
+}
+
+@media screen and (max-width: 1600px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 1300px;}
+    .welcome-popup-text h2 { font-size: 45pt;}
+    .subscribe-newsletter-tag-line { font-size: 20pt;}
+    .welcome-popup-text form h6 { font-size: 12pt;}
+    .welcome-popup-text .survey-ques-row .survey-col{ font-size:14px;}
+    .welcome-popup-text form .form-group input { padding: 0px 15px; font-size: 14px; height: 40px; }
+    .welcome-popup-text form .form-group button.subscribe {font-size: 14px !important; line-height: 30px !important; }
+    p.privacy-tag-line { font-size: 16px; }
+    .welcome-popup-text{padding:40px;}
+}
+
+@media screen and (max-width: 1366px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 1170px;}
+    .welcome-popup-text h2 { font-size: 40pt;}
+    .subscribe-newsletter-tag-line { font-size: 16pt; margin: 15px 0px;}
+    .welcome-popup-text form .form-group input { padding: 0px 15px; font-size: 14px; height: 40px; }
+    .welcome-popup-text form .form-group button.subscribe {font-size: 14px !important; line-height: 30px !important; }
+    p.privacy-tag-line { font-size: 16px; }
+}
+
+@media screen and (max-width: 1199px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 950px;}
+    .welcome-popup-text { width: 60%;}
+    .welcome-popup-figure { width: 40%;}
+    .welcome-popup-text h2 { font-size: 29pt; margin: 0px 0px 15px;}
+    .subscribe-newsletter-tag-line { font-size: 16pt; margin: 15px 0px;}
+    p.privacy-tag-line { font-size: 14px; margin-top:10px;}
+    .block.newsletter .action.subscribe {    margin: 0 !important;}
+    
+}
+
+@media screen and (max-width: 991px)
+{
+    .newsletter-modal .modal-inner-wrap { max-width: 720px;}
+    .welcome-popup-text h2 { font-size: 24pt;}
+    .subscribe-newsletter-tag-line{font-size: 13pt;}
+    .welcome-popup-text form h6{    margin: 0px 0px 15px;}
+    .newsletter-modal .modal-header{height:40px; width:40px;}
+    .newsletter-modal .modal-header .action-close {    padding: 0;    width: 40px;    height: 40px;}
+    .newsletter-modal .modal-header .action-close:before {    color: #000;    font-size: 17px;    padding: 0px !important;    line-height: 21px;}
+}
+
+@media screen and (max-width: 767px)
+{
+    .newsletter-modal .modal-content{ overflow-y: auto !important;}
+    .welcome-popup-text { width: 100%; padding: 20px;}
+    .welcome-popup-figure { width: 100%;}
+    .welcome-popup-text { padding: 20px;}
+    .welcome-popup-text .survey-ques-row { max-width: 100%;}
+    .welcome-popup-text form .form-group { max-width: 100%;}
+    
+}
+
+</style>

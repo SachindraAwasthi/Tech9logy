@@ -1,0 +1,436 @@
+<div class="container">
+<?php
+/**
+ * @author Sachindra Awasthi
+ * @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
+ * @package Tech9logy_Tathastu
+ */
+?>
+<!-- Home Page Notification Message Block -->
+            <?= $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('homepage_notification_message') // cms block identifier
+            ->toHtml() ?>
+        <!-- Home Page Banner Slider -->
+           <?= $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('banner_slider') // cms block identifier
+            ->toHtml() ?>
+            <!-- Home Page USP Section -->
+             <?= $block->getLayout()
+                ->createBlock('Magento\Cms\Block\Block')
+                ->setBlockId('usp_section') // cms block identifier
+                ->toHtml() ?>
+            <!-- Home Page Top Category Block -->
+            <?= $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('Home_page_topcategory') // cms block identifier
+            ->toHtml() ?>
+            <div class="hp-slider-box">    
+                    
+            <!-- Home Page Occassion Block Section -->
+            <?= $block->getLayout()
+                ->createBlock('Magento\Cms\Block\Block')
+                ->setBlockId('home_page_occassion') // cms block identifier
+                ->toHtml() ?>
+            </div>
+            <!-- Home Page Featured Products -->
+            <?= $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('featured_products') // cms block identifier
+            ->toHtml() ?>
+        
+        <div class="product-data-box tathastu-p-vertical-large">
+        <ul id="tabs" class="nav nav-tabs" role="tablist">
+                <li class="nav-item active" id="top-seller">Top Seller
+                </li>
+                <li class="nav-item" id="new-arrivals">New Arrivals
+                </li>
+                <li class="nav-item" id="recent-viewed">
+                    Recently Viewed
+                </li>
+            </ul>
+            
+            
+                <?php
+                    $objectManager =\Magento\Framework\App\ObjectManager::getInstance();
+                    $helperImport = $objectManager->get('\Magento\Catalog\Helper\Image');
+                        $bestSellerProduct = $block->getBestSellerProductCollection();
+                if ($bestSellerProduct->count() > 0) {
+                    ?>
+                            <div class="owl-carousel top-seller-slider ">
+                    <?php
+                    foreach ($bestSellerProduct as $bstProduct) {
+                        $imageUrl = $helperImport->init($bstProduct, 'product_base_image')
+                            ->setImageFile($bstProduct->getImage()) // image,small_image,thumbnail
+                            ->resize(380)
+                            ->getUrl();
+                        ?>
+                                <div class="item">
+                                    <div class="seller-list">
+                                        <a href="<?= $block->getBaseUrl().$bstProduct->getUrlKey(); ?>.html">
+                                            <div class="seller-image">
+                                                <img src="<?= $imageUrl; ?>">
+                                            </div>
+                                            <div class="seller-name">
+                                                <h6><?= __($bstProduct->getName()); ?></h6>
+                                                <h6>₹<?= number_format($bstProduct->getPrice(), 0); ?></h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                        <?php
+                    } ?>
+                        </div>
+                        <?php
+                } else { ?>
+                            <div class="no-product top-seller-slider-none">
+                                <p>No Matching Product found!</p>
+                            </div>
+                        <?php }
+                ?>
+            
+                <?php
+                    $objectManager =\Magento\Framework\App\ObjectManager::getInstance();
+                    $helperImport = $objectManager->get('\Magento\Catalog\Helper\Image');
+                        $bestSellerProduct = $block->getNewProductCollection();
+                if ($bestSellerProduct->count() > 0) {
+                    ?>
+                            
+                            <div class="owl-carousel new-arrival-slider">
+                            
+                    <?php
+                    foreach ($bestSellerProduct as $bstProduct) {
+                        $imageUrl = $helperImport->init($bstProduct, 'product_base_image')
+                            ->setImageFile($bstProduct->getImage()) // image,small_image,thumbnail
+                            ->resize(380)
+                            ->getUrl();
+                        ?>
+                            
+                                <div class="item">
+                                    <div class="seller-list">
+                                        <a href="<?= $block->getBaseUrl().$bstProduct->getUrlKey(); ?>.html">
+                                            <div class="seller-image">
+                                                <img src="<?= $imageUrl; ?>">
+                                            </div>
+                                            <div class="seller-name">
+                                                <h6><?= __($bstProduct->getName()); ?></h6>
+                                                <!-- <h6>₹<?php //echo number_format($bstProduct->getPrice(), 0); ?></h6> -->
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            
+                                <?php
+                    } ?>
+                        </div>
+                        <?php
+                } else { ?>
+                            <div class="no-product new-arrival-slider-none">
+                                <p>No Matching Product found!</p>
+                            </div>
+                        <?php }
+                ?>
+                <?php
+                    $objectManager =\Magento\Framework\App\ObjectManager::getInstance();
+                    $helperImport = $objectManager->get('\Magento\Catalog\Helper\Image');
+                        $bestSellerProduct = $block->getRecentViewedProductCollection();
+                if ($bestSellerProduct->count() > 0) {
+                    ?>
+                            <div class="owl-carousel rc-view">
+                    <?php
+                    foreach ($bestSellerProduct as $bstProduct) {
+                        $imageUrl = $helperImport->init($bstProduct, 'product_base_image')
+                            ->setImageFile($bstProduct->getImage()) // image,small_image,thumbnail
+                            ->resize(380)
+                            ->getUrl();
+                        ?>
+                            
+                                <div class="item">
+                                    <div class="seller-list">
+                                        <a href="<?= $block->getBaseUrl().$bstProduct->getUrlKey(); ?>.html">
+                                            <div class="seller-image">
+                                                <img src="<?= $imageUrl; ?>">
+                                            </div>
+                                            <div class="seller-name">
+                                                <h6><?= __($bstProduct->getName()); ?></h6>
+                                                <h6>₹<?= number_format($bstProduct->getPrice(), 0); ?></h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            
+                                <?php
+                    } ?>
+                        </div>
+                        <?php
+                } else { ?>
+                            <div class="no-product rc-view-none">
+                                <p>No Matching Product found!</p>
+                            </div>
+                        <?php }
+                ?>
+        </div>
+        <!-- Home Page Single Banner -->
+            <?=  $block->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('single_banner') // cms block identifier
+                    ->toHtml();
+            ?>
+            <!-- Accessiories Block Home Page -->
+            <?=  $block->getLayout()
+                    ->createBlock('Magento\Cms\Block\Block')
+                    ->setBlockId('accessiories_block_homepage') // cms block identifier
+                    ->toHtml();
+            ?>
+            <!-- Client Diaries Block Home Page -->
+        <?=  $block->getLayout()
+                ->createBlock('Magento\Cms\Block\Block')
+                ->setBlockId('client_diaries_block_home_page') // cms block identifier
+                ->toHtml();
+        ?>
+    </div>
+  
+<script>
+    require(['jquery', 'owlcarousel'], function($) {
+    $(document).ready(function(){
+        $('.banner-slider .owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            responsive:{
+                0:{
+                    items: 1,
+                    nav: true
+                },
+                600:{
+                    items: 1,
+                    nav: false
+                },
+                1000:{
+                    items: 1,
+                    nav: true,
+                    loop: false
+                }
+            }
+        });
+    });
+});
+</script>
+<script>
+    require(['jquery', 'owlcarousel'], function($) {
+    $(document).ready(function() {
+            $(".product-data-box #top-seller").on("click",function(){
+                if(!$(this).hasClass('active')){
+                    $(this).addClass('active');
+                    $("#new-arrivals").removeClass('active');
+                    $("#recent-viewed").removeClass('active');
+                    $(".product-data-box.tathastu-p-vertical-large .new-arrival-slider").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .rc-view").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .top-seller-slider").removeClass('disable');
+                    $(".no-product.top-seller-slider-none").css('display','block');
+                    $(".no-product.new-arrival-slider-none").css('display','none');
+                    $(".no-product.rc-view-none").css('display','none');
+                    var owl = $('.top-seller-slider');
+                    owl.owlCarousel({
+                        margin: 30,
+                        loop: true,
+                        nav:true,
+                        dot:false,
+                        responsive: {
+                        0: {
+                            items: 2
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 4
+                        }
+                        }
+                    });
+                }
+            });
+            $(".product-data-box #new-arrivals").on("click",function(){
+                if(!$(this).hasClass('active')){
+                    $(this).addClass('active');
+                    $("#top-seller").removeClass('active');
+                    $("#recent-viewed").removeClass('active');
+                    $(".product-data-box.tathastu-p-vertical-large .top-seller-slider").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .rc-view").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .new-arrival-slider").removeClass('disable');
+                    $(".no-product.top-seller-slider-none").css('display','none');
+                    $(".no-product.rc-view-none").css('display','none');
+                    $(".no-product.new-arrival-slider-none").css('display','block');
+                    var owl = $('.new-arrival-slider');
+                    owl.owlCarousel({
+                        margin: 30,
+                        loop: true,
+                        nav:true,
+                        dot:false,
+                        responsive: {
+                        0: {
+                            items: 2
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 4
+                        }
+                        }
+                    });
+                }
+            });
+            $(".product-data-box #recent-viewed").on("click",function(){
+                if(!$(this).hasClass('active')){
+                    $(this).addClass('active');
+                    $("#new-arrivals").removeClass('active');
+                    $("#top-seller").removeClass('active');
+                    $(".product-data-box.tathastu-p-vertical-large .top-seller-slider").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .new-arrival-slider").addClass('disable');
+                    $(".product-data-box.tathastu-p-vertical-large .rc-view").removeClass('disable');
+
+                    $(".no-product.top-seller-slider-none").css('display','none');
+                    $(".no-product.new-arrival-slider-none").css('display','none');
+                    $(".no-product.rc-view-none").css('display','block');
+                    
+                    var owl = $('.rc-view');
+                    owl.owlCarousel({
+                        margin: 30,
+                        loop: true,
+                        nav:true,
+                        dot:false,
+                        responsive: {
+                        0: {
+                            items: 2
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 4
+                        }
+                        }
+                    });
+                    
+                }
+            });
+            $(".no-product.new-arrival-slider-none").css('display','none');
+            $(".no-product.rc-view-none").css('display','none');
+            setTimeout(function() { 
+                $(".product-data-box.tathastu-p-vertical-large .new-arrival-slider").addClass('disable');
+                $(".product-data-box.tathastu-p-vertical-large .rc-view").addClass('disable');
+            }, 1500);
+            
+            
+            $(".mobile-icon").on("click",function(){
+                $(this).toggleClass("mobile-icon-open");
+            });
+            $(".mobile-icon").on("click",function(){
+                $(this).toggleClass("mobile-icon-open");
+            });
+            $(".mobile-search").on("click",function(){
+                $(this).toggleClass("mobile-search-open");
+            });
+            $('.arrow-dnfc').on("click",function(){
+                $(this).parent().siblings().find('.arrow-dnfc').removeClass('sublink-open');
+                var addclass = $(this).toggleClass('sublink-open');
+            });
+    });
+    function reload_oalcaresoul() {
+                var owl = $('.top-seller-slider');
+                owl.owlCarousel({
+                    margin: 30,
+                    loop: true,
+                    nav:true,
+                    dot:false,
+                    responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                    }
+                });
+
+                var owl = $('.new-arrival-slider');
+                owl.owlCarousel({
+                    margin: 30,
+                    loop: true,
+                    nav:true,
+                    dot:false,
+                    responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                    }
+                });
+
+                var owl = $('.rc-view');
+                owl.owlCarousel({
+                    margin: 30,
+                    loop: true,
+                    nav:true,
+                    dot:false,
+                    responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                    }
+                });
+            }
+    $(window).on('scroll',function(){
+            var sticky = $('header'),
+                scroll = $(window).scrollTop();
+
+            if (scroll >=1) {sticky.addClass('fixed1');sticky.addClass('fixed');}
+            else {sticky.removeClass('fixed')};
+        });
+});
+
+</script>
+
+<script>
+$('.hp-slider-box').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:1,
+            nav:false
+        },
+        1000:{
+            items:1,
+            nav:true,
+            loop:false
+        }
+    }
+})
+</script>
+
+
+
+

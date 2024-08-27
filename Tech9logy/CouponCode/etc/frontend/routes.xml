@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="couponcode" frontName="couponcode">
+            <module name="Tech9logy_CouponCode" />
+        </route>
+    </router>
+</config>

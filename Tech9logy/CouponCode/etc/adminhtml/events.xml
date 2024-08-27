@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="email_form_submit">
+        <observer name="email_form_submit_observer" instance="Tech9logy\CouponCode\Observer\EmailFormSubmitObserver" />
+    </event>
+    <event name="tech9logy_after_mass_generate_coupon_code">
+        <observer name="tech9logy_couponcode_observer_example" instance="Tech9logy\CouponCode\Observer\MassGenerateObserver" />
+    </event>
+</config>

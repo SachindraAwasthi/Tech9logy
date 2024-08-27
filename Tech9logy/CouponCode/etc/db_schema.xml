@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tech9logy_couponcode_rule" resource="default" engine="innodb" comment="Tech9logy CouponCode Rule Table">
+        <column xsi:type="int" name="coupon_rule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Coupon Rule Id"/>
+        <column xsi:type="int" name="rule_id" padding="10" nullable="false" comment="Rule Id"/>
+        <column xsi:type="varchar" name="rule_key" nullable="false" length="150" comment="Rule Identifier Key"/>
+        <column xsi:type="int" name="coupons_length" padding="10" nullable="false" comment="Coupons Length"/>
+        <column xsi:type="varchar" name="coupons_format" nullable="false" length="255" comment="Coupon Format"/>
+        <column xsi:type="varchar" name="coupons_prefix" nullable="false" length="255" comment="Coupons Prefix"/>
+        <column xsi:type="varchar" name="coupons_suffix" nullable="false" length="255" comment="Coupons Suffix"/>
+        <column xsi:type="varchar" name="coupons_dash" nullable="false" length="255" comment="Coupons Dash"/>
+        <column xsi:type="int" name="coupons_generated" padding="10" nullable="false" comment="Coupons Generated"/>
+        <column xsi:type="smallint" name="limit_generated" padding="5" nullable="true" comment="Limit Number generated coupon codes per email. Empty for unlimited"/>
+        <column xsi:type="smallint" name="is_check_email" padding="5" nullable="false" default="0" comment="Need to check exact email address when applying the discount code. Default 0 - disabled"/>
+        <index referenceId="PRIMARY" indexType="btree">
+            <column name="coupon_rule_id"/>
+        </index>
+    </table>
+    
+    <table name="tech9logy_couponcode_coupon" resource="default" engine="innodb" comment="Tech9logy CouponCode Coupon Table">
+        <column xsi:type="smallint" name="couponcode_id" padding="5" unsigned="true" nullable="false" identity="true" comment="Coupon Code ID"/>
+        <column xsi:type="varchar" name="alias" nullable="true" length="150" comment="Alias"/>
+        <column xsi:type="varchar" name="code" nullable="false" length="255" comment="Code"/>
+        <column xsi:type="smallint" name="coupon_id" padding="5" nullable="false" comment="Coupon Id"/>
+        <column xsi:type="int" name="rule_id" padding="10" nullable="false" comment="Rule Id"/>
+        <column xsi:type="int" name="customer_id" padding="10" nullable="true" comment="Customer Id"/>
+        <column xsi:type="varchar" name="email" nullable="false" comment="Email"/>
+        <column xsi:type="varchar" name="form_identifier" nullable="false" length="255" comment="Form Identifier"/>
+        <column xsi:type="varchar" name="survey_answer" nullable="false" length="255" comment="Survey Answer For PopUP"/>
+        <index referenceId="PRIMARY" indexType="btree">
+            <column name="couponcode_id"/>
+        </index>
+    </table>
+
+<!-- Table: tech9logy_couponcode_campaign -->
+    <table name="tech9logy_couponcode_campaign" resource="default" engine="innodb" comment="Tech9logy CouponCode Campaign Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Campaign ID"/>
+        <column xsi:type="text" name="sender_email" nullable="true" comment="Sender Email ID"/>
+        <column xsi:type="int" name="cart_price_rule_id" padding="10" nullable="false" comment="Cart Price Rule ID"/>
+        <column xsi:type="text" name="sendgrid_list_id" nullable="true" comment="Sendgrid List ID"/>
+        <column xsi:type="text" name="sendgrid_api_key" nullable="true" comment="Sendgrid API Key"/>
+        <column xsi:type="text" name="form_name" nullable="true" comment="Enter Form Name"/>
+        <column xsi:type="text" name="email_template" nullable="true" comment="Enter Email Template Name"/>
+        <index referenceId="PRIMARY" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+<!-- Newsletter Popup Table -->
+    <table name="tech9logy_campaigns_newsletter" resource="default" engine="innodb" comment="Tech9logy Newsletterpopup Newsletter Campaign Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Campaign ID"/>
+        <column xsi:type="text" name="sender_email" nullable="true" comment="Sender Email ID"/>
+        <column xsi:type="int" name="cart_price_rule_id" padding="10" nullable="false" comment="Cart Price Rule ID"/>
+        <column xsi:type="text" name="sendgrid_list_id" nullable="true" comment="Sendgrid List ID"/>
+        <column xsi:type="text" name="sendgrid_api_key" nullable="true" comment="Sendgrid API Key"/>
+        <column xsi:type="text" name="popup_delay" nullable="true" comment="PopUP Delay Time"/>
+        <column xsi:type="text" name="email_template" nullable="true" comment="Enter Email Template Name"/>
+        <column xsi:type="text" name="form_name" nullable="true" comment="Enter Form Name"/>
+        <column xsi:type="text" name="heading" nullable="true" comment="Enter Newsletter PoPup Heading Name"/>
+        <column xsi:type="text" name="heading_color" nullable="true" comment="Enter Newsletter PoPup Heading Color"/>
+        <column xsi:type="text" name="sub_heading" nullable="true" comment="Enter Newsletter PoPup Sub Heading Name"/>
+        <column xsi:type="text" name="sub_heading_color" nullable="true" comment="Enter Newsletter PoPup Heading Color"/>
+        <column xsi:type="varchar" name="add_image" nullable="true" comment="Add Newsletter PoPup Background Image"/>
+        <column xsi:type="text" name="background_color" nullable="true" comment="Enter Newsletter PoPup Background Color"/>
+        <column xsi:type="text" name="question" nullable="true" comment="Enter Newsletter PoPup Question"/>
+        <column xsi:type="text" name="question_type" nullable="true" comment="Enter Newsletter PoPup Question Type"/>      
+        <column xsi:type="text" name="button_color" nullable="true" comment="Enter Newsletter Button Color"/>
+        <column xsi:type="text" name="button_text" nullable="true" comment="Enter Newsletter PoPup Button Text"/>
+        <column xsi:type="text" name="disclaimer" nullable="true" comment="Enter Newsletter PoPup Disclaimer"/>
+        <column xsi:type="text" name="display_mode" nullable="true" comment="PopUp Display Mode Block/Template"/>
+        <column xsi:type="text" name="cms_block_id" nullable="true" comment="Selected CMS Block ID"/>
+        <column xsi:type="text" name="disclaimer_color" nullable="true" comment="Enter Newsletter PoPup Disclaimer Color"/>
+        <column xsi:type="text" name="popup_mode" nullable="true" comment="Enter Newsletter PoPup Disclaimer Color"/>
+        <column xsi:type="text" name="close_popup" nullable="true" comment="PopUP Close Mode"/>
+        <column xsi:type="text" name="display_mode_home" nullable="true" comment="Display Mode Home Or Other Page"/>
+        <column xsi:type="text" name="sendgrid_mode" nullable="true" comment="Welcome Page Configuration"/>
+        <column xsi:type="text" name="page_visiting" nullable="true" comment="Display After Page Visiting"/>
+        <column xsi:type="text" name="specific_coupon" nullable="true" comment="Specific Coupon"/>
+        <column xsi:type="text" name="terms_and_condition" nullable="true" comment="Terms and Condition Enable Disable "/>
+        <column xsi:type="text" name="terms_and_condition_text" nullable="true" comment="Terms and Condition text"/>
+        <index referenceId="PRIMARY" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Email/etc/email_templates.xsd">
+    <template id="tech9logy_email_template_form" label="Custom Email Template" file="template_form.html" type="html" module="Tech9logy_CouponCode" area="frontend"/>
+</config>
