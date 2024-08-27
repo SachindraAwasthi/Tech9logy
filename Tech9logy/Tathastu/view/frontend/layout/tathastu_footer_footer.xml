@@ -1,0 +1,17 @@
+<!-- /**
+* @author Sachindra Awasthi
+* @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
+* @package Tech9logy_Tathastu
+*/ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+<!-- for add css and js file on page -->
+<head>
+
+</head>
+<body>
+    <referenceContainer name="content">
+        <block class="Tech9logy\Tathastu\Block\Footer" name="customfooter" template="Magento_Theme::html/customfooter.phtml">
+        </block>
+    </referenceContainer>
+</body>
+</page>

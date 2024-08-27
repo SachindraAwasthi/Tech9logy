@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- /**
+* @author Sachindra Awasthi
+* @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
+* @package Tech9logy_Tathastu
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="CloudwaysProductData" instance="Tech9logy\Tathastu\Observer\Product\Data" />
+    </event>
+	<event name="catalog_controller_product_init_after">
+        <observer instance="Tech9logy\Tathastu\Observer\Catalog\Product\FullPathBreadcrumbs" name="addProductFullPathBreadcrumbs"/>
+    </event>
+</config>
+

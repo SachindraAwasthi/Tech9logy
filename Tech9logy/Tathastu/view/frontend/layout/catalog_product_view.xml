@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- /**
+* @author Sachindra Awasthi
+* @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
+* @package Tech9logy_Tathastu
+*/ -->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+                <referenceBlock name="product.info.addtocart">
+                    <action method='setTemplate'>
+                        <argument name="template" xsi:type="string">Tech9logy_Tathastu::product/view/addtocart.phtml</argument>
+                    </action>
+                </referenceBlock>
+                <referenceBlock name="product.info.addtocart.additional">
+                    <action method='setTemplate'>
+                        <argument name="template" xsi:type="string">Tech9logy_Tathastu::product/view/addtocart.phtml</argument>
+                    </action>
+                </referenceBlock>
+                <referenceBlock name="product.info.details" remove="true"></referenceBlock>
+             <move element="breadcrumbs" destination="content" before="-" />
+             
+            <!-- <move element="breadcrumbs" destination="product.info.media" before="-" /> -->
+            <referenceContainer name="product.info.main">
+                <block class="Magento\Framework\View\Element\Template" name="customblock" template="Tech9logy_Tathastu::html/services.phtml" after="-"/>
+            </referenceContainer>
+
+            <referenceContainer name="content">
+                <block class="Magento\Catalog\Block\Widget\RecentlyViewed" name="recently_viewed"
+                    template="Magento_Catalog::product/widget/viewed/grid.phtml" after="-">
+                    <arguments>
+                        <argument name="uiComponent" xsi:type="string">widget_recently_viewed</argument>
+                        <argument name="page_size" xsi:type="number">4</argument>
+                        <argument name="show_attributes" xsi:type="string">name,image,price</argument>
+                        <argument name="show_buttons" xsi:type="string">add_to_cart</argument>
+                    </arguments>
+                </block>
+            </referenceContainer>
+            
+            <move element="product.info.description" destination="content" before="recently_viewed" />
+            <move element="catalog.product.related" destination="content" before="recently_viewed" />
+    </body>
+</page>

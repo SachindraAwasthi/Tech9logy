@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add the reCAPTCHA script -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+</head>
+<body>
+    <?php
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $enableCouponCodeForm = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInterface')
+        ->isSetFlag('tech9logycouponcode/general_settings/enable_shortcode', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    ?>
+    <?php if ($enableCouponCodeForm): ?>
+        <div class="submitform">
+            <form id="myForm" action="<?= $block->getUrl('couponcode/index/submit') ?>" method="post">
+                <!-- Include the Magento form key input -->
+                <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>">
+                
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="coupon_email" placeholder="Email" required>
+                <!-- Add the reCAPTCHA widget -->
+                <!-- <div class="g-recaptcha" data-sitekey="6Le8NHQnAAAAAE0yDZPNYfVyz2Vrli0cLMBcPXQp"></div> -->
+
+                <input type="submit" name="Submit" >
+            <form>
+        </div>
+    <?php endif; ?>
+
+    <style>
+        .submitform {
+            padding-top: 200px;
+        }
+    </style>
+<!--
+    <script>
+        function submitForm() {
+            // Get the response from the reCAPTCHA widget
+            var response = grecaptcha.getResponse();
+
+            // Check if the response is empty, which means the user hasn't completed the reCAPTCHA
+            if (response.length === 0) {
+                alert("Please complete the reCAPTCHA before submitting the form.");
+                return;
+            }
+
+            // If the reCAPTCHA is completed, submit the form
+            document.getElementById("myForm").submit();
+        }
+    </script> -->
+</body>
+</html>
+

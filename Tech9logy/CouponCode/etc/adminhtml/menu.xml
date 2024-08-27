@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Tech9logy_CouponCode::couponcode" title="Coupon Code" module="Tech9logy_CouponCode" sortOrder="10" resource="Magento_Backend::couponcode_elements"/>
+		<add id="Tech9logy_CouponCode::rule" title="Dynamic Coupon Code Rules" module="Tech9logy_CouponCode" sortOrder="10" action="couponcode/rule/index" resource="Tech9logy_CouponCode::rule" parent="Tech9logy_CouponCode::couponcode"/>
+		<add id="Tech9logy_CouponCode::coupon" title="Dynamic Coupon Code Or Log" module="Tech9logy_CouponCode" sortOrder="20" action="couponcode/coupon/index" resource="Tech9logy_CouponCode::coupon" parent="Tech9logy_CouponCode::couponcode"/>
+		<!-- <add id="Tech9logy_CouponCode::generate" title="Send Coupon Code" module="Tech9logy_CouponCode" sortOrder="40" action="couponcode/generate/index" resource="Tech9logy_CouponCode::generate" parent="Tech9logy_CouponCode::couponcode"/> -->
+		<add id="Tech9logy_CouponCode::grid" title="Manage Campaigns" module="Tech9logy_CouponCode" sortOrder="30" parent="Tech9logy_CouponCode::couponcode" action="couponcode/grid/index" resource="Tech9logy_CouponCode::view"/>
+		<add id="Tech9logy_CouponCode::configuration" title="Configuration" module="Tech9logy_CouponCode" sortOrder="60" parent="Tech9logy_CouponCode::couponcode" action="adminhtml/system_config/edit/section/tech9logycouponcode" resource="Tech9logy_CouponCode::config_couponcode"/> 
+	</menu>
+</config>

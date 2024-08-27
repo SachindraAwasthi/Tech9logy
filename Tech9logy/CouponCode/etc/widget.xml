@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!-- /**
+  * @author Sachindra Awasthi
+  * @copyright Copyright (c) 2023 Tech9logy (https://www.tech9logy.com/)
+  * @package Tech9logy_CouponCode
+*/ -->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="Tech9logy\CouponCode\Block\Widget\Form" id="tech9logy_couponcode_form">
+		<label>Generate and Send Coupon Code </label>
+		<description>Coupon Code</description>
+		<parameters>
+			<parameter name="couponcode" sort_order="10" visible="true" xsi:type="text">
+				<label>Coupon Code</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

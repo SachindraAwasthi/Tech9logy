@@ -1,0 +1,23 @@
+{
+    "name": "tech9logy/module-tathastu",
+    "description": "Tech9logy Tathastu extension developed by Sachindra Awasthi",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Sachindra Awasthi",
+            "email": "awasthisachindra0001@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tech9logy\\Tathastu\\": ""
+        }
+    }
+}

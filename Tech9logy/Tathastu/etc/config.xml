@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- /**
+* @author Sachindra Awasthi
+* @copyright Copyright (c) 2024 Tech9logy (https://www.tech9logy.com/)
+* @package Tech9logy_Tathastu
+*/ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <csp>
+            <mode>
+                <storefront>
+                    <report_only>0</report_only>
+                </storefront>
+                <admin>
+                    <report_only>0</report_only>
+                </admin>
+            </mode>
+        </csp>
+    </default>
+</config>

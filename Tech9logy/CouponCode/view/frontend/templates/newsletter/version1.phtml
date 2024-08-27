@@ -1,0 +1,121 @@
+<style>
+body {font-family: Arial, sans-serif;}
+.flex-box {display: flex; flex-flow: wrap;}
+.bottom-box-content {align-items: center; background-color: #f1f1f1;}
+.bottom-content-left { width: calc(100% - 400px); align-items: center; box-sizing: border-box; padding: 20px;  align-items: center; box-sizing: border-box; background-color: #fff;}
+.bottom-fig {width: 150px;}
+.bottom-fig img {width: 100%;}
+.fig-text {width: calc(100% - 150px); padding: 0px 0px 0px 25px; box-sizing: border-box;}
+.fig-text h2{ font-size: 20px; font-weight: bold; margin: 0px 0px 10px; padding-right: 10px;}
+.fig-text h2, .fig-text p {margin-top: 0px;}
+.bottom-content-right { width: 400px; padding: 20px; box-sizing: border-box;}
+.bottom-content-right .form-heading{ font-size: 20px; font-weight: bold; line-height: normal;}
+.newsletter-box {display: flex; width: 100%; position: relative;}
+.newsletter-box input[type="text"] {width: 100%; height: 60px; padding: 10px 130px 10px 10px; box-sizing: border-box; border-radius: 5px; border: 1px solid #bfbfbf;}
+.newsletter-box input[type="text"]:focus {outline: none;}
+.newsletter-box button {max-width: 120px; width: 100%; position: absolute; right: 10px; height: 40px; top: 10px; background-color: #000; color: #fff; border: 0px; border-radius: 3px; cursor: pointer; text-transform: uppercase;}
+.newsletter-box button:hover {background-color: #333;}
+.form-heading {margin-bottom: 10px;}
+.form-heading span {font-size: 20px;}
+.overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 1000;}
+.bottom-box-text {background-color: #fff; border-radius: 0px; width: 100%; position: fixed; bottom: 0; box-sizing: border-box;}
+.close-btn { width: 25px; height: 25px; position: absolute; top: 10px; right: 10px; background-color: #f1f1f1; padding: 5px; box-sizing: border-box; border-radius: 5px; cursor: pointer;}
+
+@media only screen and (max-width: 991px)
+{
+	.bottom-box-content { background-color: #fff;}
+	.bottom-content-left { width: calc(100% - 0px); align-items: flex-start;}
+	.bottom-content-right { width: 100%; padding: 0px 20px 20px; box-sizing: border-box;}
+	
+	
+
+}
+
+@media only screen and (max-width: 639px)
+{
+	.bottom-content-left{ padding: 15px;}
+	.bottom-fig { width: 100px;	}
+	.fig-text {	width: calc(100% - 100px);	padding: 0px 0px 0px 15px;	}
+	.fig-text h2{ font-size: 16px;}
+	.bottom-content-right { padding: 0px 15px 15px;	}
+	.bottom-content-right .form-heading { font-size: 16px;	}
+	.newsletter-box input[type="text"] { height: 46px; padding: 5px 130px 5px 10px;}
+	.newsletter-box button { right: 6px; height: 35px;	top: 5px;}
+	.close-btn {top: 2px; right: 2px;}
+
+}
+
+@media only screen and (max-width: 479px)
+{
+	.bottom-fig { width: 70px;	}
+	.fig-text {	width: calc(100% - 70px);}
+
+}
+
+</style>
+
+<?php
+$formCookieName = "newsletterDisplayed";
+$formCookieValue = "true";
+
+if (!isset($_COOKIE[$formCookieName])) {
+    // Display the form if the cookie doesn't exist
+    $displayForm = true;
+    // Set the cookie expiry time to one month
+    setcookie(
+        $formCookieName,
+        $formCookieValue,
+        time() + 30 * 24 * 60 * 60,
+        "/"
+    );
+} else {
+    $displayForm = false;
+}
+?>
+
+<?php if ($displayForm): ?>
+    <div class="overlay">
+        <div class="bottom-box-text">
+            <div class="close-btn">
+                <img src="<?php echo $this->getViewFileUrl(
+                    "Tech9logy_CouponCode::images/close.png"
+                ); ?>" />
+            </div>
+            <div class="bottom-box-content flex-box">
+                <div class="bottom-content-left flex-box">
+                    <div class="bottom-fig">    
+                        <img src="<?php echo $this->getViewFileUrl(
+                            "Tech9logy_CouponCode::images/version.jpg"
+                        ); ?>" />
+                    </div>
+                    <div class="fig-text">
+                        <h2>Lorem Ipsum is simply test text of </h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    </div>
+                </div>
+                <div class="bottom-content-right">
+                    <form action="newsletter/subscriber/new" enctype="multipart/form-data" novalidate method="post" data-mage-init='{"validation": {"errorClass": "mage-error"}}' id="">
+                        <div class="form-group">
+                            <div class="form-heading">Newsletter</div>
+                        </div>
+                        <div class="form-group newsletter-box">
+                            <input name="email" type="email" class="input-bx" id="popup_newsletter_email" placeholder="<?php echo $block->escapeHtml(
+                                __(" Enter address ")
+                            ); ?>" data-validate="{required:true, 'validate-email':true}" />
+                            <button class="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var closeButton = document.querySelector('.close-btn');
+            closeButton.addEventListener('click', function () {
+                document.querySelector('.overlay').style.display = 'none';
+            });
+        });
+    </script>
+<?php endif; ?>
+
